@@ -29,7 +29,9 @@ jobs:
           const major = now.getUTCFullYear() - 2000
           const minor = String(now.getUTCMonth() + 1) + String(now.getUTCDate()).padStart(2, '0')
           const patch = now.getUTCHours() + String(now.getUTCMinutes()).padStart(2, '0')
-          return `${major}.${minor}.${patch}+${context.ref}.${context.runNumber}.${context.sha.substr(0,7)}`
+          const ref = context.ref.replace(/^refs\/heads\//, '')
+          console.log(context)
+          return `${major}.${minor}.${patch}+${ref}.${context.runNumber}-${context.runId}.${context.sha.substr(0,7)}`
         result-encoding:  string
 
     # Runs a single command using the runners shell
