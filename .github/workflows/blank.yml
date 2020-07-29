@@ -1,8 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
-env:
-  BUILD_VERSION: ${{format('{0}.{1}.{2}+{3}.{4}.{5}', 20, 728, 2250, github.ref, github.run_number, github.sha)}}
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -35,8 +33,8 @@ jobs:
         result-encoding:  string
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script ${{env.BUILD_VERSION}}
-      run: echo Hello, world! ${BUILD_VERSION}
+    - name: Run a one-line script ${{steps.version.outputs.result}}
+      run: echo Hello, world! ${{steps.version.outputs.result}}
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
