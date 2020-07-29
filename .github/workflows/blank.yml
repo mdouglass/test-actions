@@ -26,7 +26,7 @@ jobs:
     - uses: actions/github-script@v2.0.0
       id: version
       with:
-        scripts: |
+        script: |
           const now = new Date()
           const major = now.getUTCFullYear() - 2000
           const minor = String(now.getUTCMonth() + 1) + String(now.getUTCDate()).padStart(2, '0')
