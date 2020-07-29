@@ -30,8 +30,8 @@ jobs:
           const minor = String(now.getUTCMonth() + 1) + String(now.getUTCDate()).padStart(2, '0')
           const patch = now.getUTCHours() + String(now.getUTCMinutes()).padStart(2, '0')
           const ref = context.ref.replace(/^refs\/heads\//, '')
-          console.log(context)
-          return `${major}.${minor}.${patch}+${ref}.${context.runNumber}-${context.runId}.${context.sha.substr(0,7)}`
+          console.log(process.env)
+          return `${major}.${minor}.${patch}+${ref}.${process.env.GITHUB_RUN_NUMBER}.${context.sha.substr(0,7)}`
         result-encoding:  string
 
     # Runs a single command using the runners shell
